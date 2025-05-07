@@ -16,7 +16,7 @@ This project uses Hadoop MapReduce to analyze review text data and identify the 
 
 ## Components
 
-### Mapper (`mapper-1.py`)
+### Mapper (`mapper.py`)
 
 The mapper processes each review line:
 - Takes tab-separated input (item_type, review_text, sentiment)
@@ -33,7 +33,7 @@ for word in words:
         print(f"{key}\t{word}\t1")
 ```
 
-### Combiner (`combiner-1.py`)
+### Combiner (`combiner.py`)
 
 The combiner performs local aggregation to reduce network traffic:
 - Aggregates word counts by key from a single mapper
@@ -49,7 +49,7 @@ else:
         print(f"{current_key}\t{w}\t{c}")
 ```
 
-### Reducer (`reducer-1.py`)
+### Reducer (`reducer.py`)
 
 The reducer generates the final results:
 - Aggregates word counts from all mappers/combiners
